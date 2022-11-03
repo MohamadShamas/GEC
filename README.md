@@ -21,6 +21,6 @@ gec = GEC(Sig,sWind,sStep,Fs,Fmin,Fmax)
 
 in case you use GEC, please cite:
 
-Bragin A, Almajano J, Kheiri F, Engel J Jr (2014a) Functional Connectivity in the Brain Estimated by Analysis of Gamma Events. PLOS ONE 9:e85900.
+Bragin A, Almajano J, Kheiri F, Engel J Jr (2014) Functional Connectivity in the Brain Estimated by Analysis of Gamma Events. PLOS ONE 9:e85900.
 
-Kheiri F, Bragin A, Jr JE (2013a) Functional connectivity between brain areas estimated by analysis of gamma waves. J Neurosci Methods 214:184–191.
+Kheiri F, Bragin A, Jr JE (2013) Functional connectivity between brain areas estimated by analysis of gamma waves. J Neurosci Methods 214:184–191.
