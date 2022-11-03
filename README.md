@@ -18,3 +18,9 @@ Fmin = 30 % lower frequncy band limit, in case of low gamma it is 30HZ
 Fmax = 55 % upper frequncy band limit, in case of low gamma it is 55Hz
 
 gec = GEC(Sig,sWind,sStep,Fs,Fmin,Fmax)
+
+in case you use GEC, please cite:
+
+Bragin A, Almajano J, Kheiri F, Engel J Jr (2014a) Functional Connectivity in the Brain Estimated by Analysis of Gamma Events. PLOS ONE 9:e85900.
+
+Kheiri F, Bragin A, Jr JE (2013a) Functional connectivity between brain areas estimated by analysis of gamma waves. J Neurosci Methods 214:184–191.
