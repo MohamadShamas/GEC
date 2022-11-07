@@ -8,6 +8,7 @@ PeriWind = round(1/Fmin/2*Fs);
 nWind = numel(vWind);
 nChan = size(Sig,1);
 nPairs = (nChan^2 - nChan)/2;
+plot_fig= 0;
 
 % Parameters
 nOrder = 32;
@@ -63,6 +64,7 @@ for iWind = 1:nWind
     GammaEv = zeros(size(WindFilt));
     mPhaseSync = zeros(nChan);
     
+    if plot_fig
     % choose 2 random channels to plot
     ch2plot = randperm(size(WindFilt,1),2);
     ch2plot = sort(ch2plot);
@@ -80,6 +82,8 @@ for iWind = 1:nWind
     ax3.YGrid = 'off';
     xticks(linspace(0,LWind,nbins));
     xticklabels({});
+    end
+    
     for iChan = 1:size(WindFilt,1)-1 %size is rows or no. of channels
         
         [v_GammaPks,ixPks] = findpeaks(WindFilt(iChan,1:LWind),'Threshold',0.1);
@@ -87,6 +91,7 @@ for iWind = 1:nWind
         ixPks(ixDisc) = [];
         GammaEv(iChan,ixPks) = 1;
         
+        if plot_fig
         % plot train of events
         if iChan == ch2plot(1)
             ax2 = subplot(5,1,2);
@@ -99,7 +104,7 @@ for iWind = 1:nWind
             xticklabels({});
             xlim(ax2,[0 LWind]);
         end
-        
+        end
         for iChan1 = iChan+1:nChan % Loop pairs of channels across rows, i.e. 1-2, 1-3, 1-4,...1-nChan,2 2-3, 2-4,...2-nChan
             
             % Find peaks for all channels in the first iteration
@@ -109,6 +114,7 @@ for iWind = 1:nWind
                 v_GammaPks1(ixDisc1) = [];
                 ixPks1(ixDisc1) = [];
                 GammaEv(iChan1,ixPks1) = 1;
+                if plot_fig 
                 % plot train of events for second channel
                 if iChan1 == ch2plot(2)
                     ax4 = subplot(5,1,4);
@@ -120,6 +126,7 @@ for iWind = 1:nWind
                     xticks(linspace(0,LWind,nbins));
                     xticklabels({});
                     xlim(ax4,[0 LWind]);
+                end
                 end
             end
             
@@ -136,10 +143,12 @@ for iWind = 1:nWind
             % Bin histogram - iChan x length of PeriWind*2
             v_Histbin = sum(mPeriEv,1); % zeros(1,nbins-1);
             v_HistbinAmpl = sum(mPeriEvAmpl,1);
+            if plot_fig
             % plot histigram
             if (iChan1 == ch2plot(2)&& iChan == ch2plot(1))
             subplot(5,1,5);
             bar(v_Histbin);
+            end
             end
             % Normalize histogram
             v_Histbin = v_Histbin + eps; % Avoid zeros
